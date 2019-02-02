@@ -22,12 +22,12 @@ namespace AspJS {
         protected global::System.Web.UI.HtmlControls.HtmlForm frm;
         
         /// <summary>
-        /// btnImage control.
+        /// BtnImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnImage;
+        protected global::System.Web.UI.WebControls.ImageButton BtnImage;
     }
 }
