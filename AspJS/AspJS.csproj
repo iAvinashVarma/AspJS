@@ -61,12 +61,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Employee.xml" />
+    <Content Include="Data\Employee.xsl" />
+    <Content Include="Global.asax" />
     <Content Include="Images\blueButton.png" />
     <Content Include="Images\greenButton.png" />
     <Content Include="Index.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -75,6 +81,7 @@
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyncModule.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
