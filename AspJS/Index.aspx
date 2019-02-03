@@ -57,15 +57,13 @@
 					</tr>
 					<tr>
 						<td colspan="3">
-							<asp:Button ID="BtnSubmit" runat="server" Text="Submit" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...'" />
+							<asp:Button ID="BtnSubmit" runat="server" Text="Submit" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...'" OnClick="BtnSubmit_Click" />
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<script type="text/javascript">
-			document.getElementById('TxtName').focus();
-
 			function countCharacters() {
 				var lblCount = document.getElementById('LblCount');
 				var txtName = document.getElementById('TxtName');
