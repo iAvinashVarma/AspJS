@@ -61,11 +61,18 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Data" />
+    <Folder Include="Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\dbo.Employess.sql" />
+    <Build Include="Procedures\dbo.uspDeleteEmployees.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\dbo.Employees.data.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
 </Project>

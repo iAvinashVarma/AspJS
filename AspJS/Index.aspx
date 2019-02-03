@@ -22,13 +22,20 @@
 					</asp:TemplateField>
 					<asp:TemplateField ShowHeader="False">
 						<HeaderTemplate>
-							Delete
+							<asp:LinkButton Id="LnkDeleteSelected" runat="server" CausesValidation="false" Text="Delete Selected" OnClick="LnkDeleteSelected_Click"></asp:LinkButton>
 						</HeaderTemplate>
 						<ItemTemplate>
 							<asp:LinkButton ID="EmployeeDeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
 						</ItemTemplate>
 					</asp:TemplateField>
-					<asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+					<asp:TemplateField HeaderText="Id" InsertVisible="False" SortExpression="Id">
+						<EditItemTemplate>
+							<asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
+						</EditItemTemplate>
+						<ItemTemplate>
+							<asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
+						</ItemTemplate>
+					</asp:TemplateField>
 					<asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
 					<asp:BoundField DataField="Gender" HeaderText="Gender" SortExpression="Gender" />
 				</Columns>
