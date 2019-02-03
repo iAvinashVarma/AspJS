@@ -22,21 +22,21 @@ namespace AspJS {
         protected global::System.Web.UI.HtmlControls.HtmlForm frm;
         
         /// <summary>
-        /// EmployeeGrid control.
+        /// EmployeeGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView EmployeeGrid;
+        protected global::System.Web.UI.WebControls.GridView EmployeeGridView;
         
         /// <summary>
-        /// EmployeeXmlDataSource control.
+        /// EmployeeDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource EmployeeXmlDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource EmployeeDataSource;
     }
 }

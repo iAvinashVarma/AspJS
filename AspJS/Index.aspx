@@ -9,30 +9,36 @@
 <body>
 	<form id="frm" runat="server">
 		<div>
-			<asp:GridView ID="EmployeeGrid" runat="server" AutoGenerateColumns="False" DataSourceID="EmployeeXmlDataSource" EnableModelValidation="True" AllowPaging="True" BackColor="#CCCCCC" BorderColor="#999999" BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" ForeColor="Black">
+			<asp:GridView ID="EmployeeGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="EmployeeDataSource" EnableModelValidation="True">
 				<Columns>
 					<asp:TemplateField ShowHeader="False">
 						<ItemTemplate>
-							<asp:LinkButton ID="BtnDelete" OnClientClick="getConfirmation(this);" runat="server" CausesValidation="false" OnClick="BtnDelete_Click" Text="Delete"></asp:LinkButton>
+							<asp:LinkButton ID="DeleteButton" runat="server" OnClientClick="return getConfirmation();" CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
 						</ItemTemplate>
 					</asp:TemplateField>
-					<asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
+					<asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
 					<asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
 					<asp:BoundField DataField="Gender" HeaderText="Gender" SortExpression="Gender" />
 				</Columns>
-				<FooterStyle BackColor="#CCCCCC" />
-				<HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-				<PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" />
-				<RowStyle BackColor="White" />
-				<SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
 			</asp:GridView>
-			<asp:XmlDataSource ID="EmployeeXmlDataSource" runat="server" DataFile="~/Data/Employee.xml" TransformFile="~/Data/Employee.xsl"></asp:XmlDataSource>
+			<asp:SqlDataSource ID="EmployeeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:AspJSDBConnectionString %>" DeleteCommand="DELETE FROM [Employees] WHERE [Id] = @original_Id" InsertCommand="INSERT INTO [Employees] ([Name], [Gender]) VALUES (@Name, @Gender)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT [Id], [Name], [Gender] FROM [Employees]" UpdateCommand="UPDATE [Employees] SET [Name] = @Name, [Gender] = @Gender WHERE [Id] = @original_Id">
+				<DeleteParameters>
+					<asp:Parameter Name="original_Id" Type="Int32" />
+				</DeleteParameters>
+				<InsertParameters>
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Gender" Type="String" />
+				</InsertParameters>
+				<UpdateParameters>
+					<asp:Parameter Name="Name" Type="String" />
+					<asp:Parameter Name="Gender" Type="String" />
+					<asp:Parameter Name="original_Id" Type="Int32" />
+				</UpdateParameters>
+			</asp:SqlDataSource>
 		</div>
 	</form>
 	<script type="text/javascript">
-		function getConfirmation(obj) {
-			debugger;
-			var currentObj = obj;
+		function getConfirmation() {
 			var isConfirm = confirm('Are you sure to delete?');
 			return isConfirm;
 		}

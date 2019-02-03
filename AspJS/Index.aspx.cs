@@ -10,10 +10,5 @@ namespace AspJS
 		{
 			
 		}
-
-		protected void BtnDelete_Click(object sender, EventArgs e)
-		{
-			
-		}
 	}
 }

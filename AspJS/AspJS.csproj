@@ -61,8 +61,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Employee.xml" />
-    <Content Include="Data\Employee.xsl" />
     <Content Include="Global.asax" />
     <Content Include="Images\blueButton.png" />
     <Content Include="Images\greenButton.png" />

@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Employees>
-	<Employee Id="1" Name="Avinash" Gender="Male"/>
-	<Employee Id="2" Name="Bharath" Gender="Male"/>
-	<Employee Id="3" Name="Manoj" Gender="Male"/>
-	<Employee Id="4" Name="Karthik" Gender="Male"/>
-</Employees>

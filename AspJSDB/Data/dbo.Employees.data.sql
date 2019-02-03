@@ -1,0 +1,5 @@
+﻿Insert into Employees values('Mark', 'Male', GETDATE())
+Insert into Employees values('John', 'Male', GETDATE())
+Insert into Employees values('Sara', 'Female', GETDATE())
+Insert into Employees values('Mary', 'Female', GETDATE())
+Insert into Employees values('Mike', 'Male', GETDATE())
