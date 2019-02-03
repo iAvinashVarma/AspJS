@@ -18,6 +18,11 @@
 			<table class="table">
 				<tbody>
 					<tr>
+						<td colspan="3">
+							<asp:Label ID="LblDate" runat="server"></asp:Label>
+						</td>
+					</tr>
+					<tr>
 						<td>Name</td>
 						<td>
 							<asp:TextBox ID="TxtName" runat="server" onkeyup="countCharacters();"></asp:TextBox>
