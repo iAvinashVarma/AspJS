@@ -9,8 +9,7 @@
 <body>
 	<form id="frm" runat="server">
 		<div>
-			<asp:GridView ID="EmployeeGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="EmployeeDataSource" EnableModelValidation="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnRowDataBound="EmployeeGridView_RowDataBound">
-				<AlternatingRowStyle BackColor="#CCCCCC" />
+			<asp:GridView ID="EmployeeGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="EmployeeDataSource" EnableModelValidation="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal" OnRowDataBound="EmployeeGridView_RowDataBound">
 				<Columns>
 					<asp:TemplateField>
 						<HeaderTemplate>
@@ -39,10 +38,10 @@
 					<asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
 					<asp:BoundField DataField="Gender" HeaderText="Gender" SortExpression="Gender" />
 				</Columns>
-				<FooterStyle BackColor="#CCCCCC" />
-				<HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-				<PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-				<SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+				<FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+				<HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+				<PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+				<SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
 			</asp:GridView>
 			<asp:SqlDataSource ID="EmployeeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:AspJSDBConnectionString %>" DeleteCommand="DELETE FROM [Employees] WHERE [Id] = @original_Id" InsertCommand="INSERT INTO [Employees] ([Name], [Gender]) VALUES (@Name, @Gender)" OldValuesParameterFormatString="original_{0}" SelectCommand="SELECT [Id], [Name], [Gender] FROM [Employees]" UpdateCommand="UPDATE [Employees] SET [Name] = @Name, [Gender] = @Gender WHERE [Id] = @original_Id">
 				<DeleteParameters>
@@ -65,6 +64,12 @@
 					for (var i = 1; i < employeeGridView.rows.length; i++) {
 						var cellCheckBox = employeeGridView.rows[i].cells[0].getElementsByTagName("input")[0];
 						cellCheckBox.checked = checkbox.checked;
+
+						if (checkbox.checked) {
+							employeeGridView.rows[i].style.background = '#CCCCCC';
+						} else {
+							employeeGridView.rows[i].style.background = '#FFFFFF';
+						}
 					}
 				}
 
