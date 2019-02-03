@@ -19,6 +19,8 @@ namespace AspJS
 		{
 			if (e.Row.RowType == DataControlRowType.DataRow)
 			{
+				e.Row.Attributes.Add("onmouseover", "this.style.fontWeight='bold'");
+				e.Row.Attributes.Add("onmouseout", "this.style.fontWeight='normal'");
 				LinkButton deleteButton = e.Row.FindControl("EmployeeDeleteButton") as LinkButton;
 				object id = DataBinder.Eval(e.Row.DataItem, "Id");
 				string onClickValue = string.Format("return confirm('Are you sure to delete record with id: \"{0}\".?')", id);
