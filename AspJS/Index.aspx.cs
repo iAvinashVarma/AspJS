@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Xml;
 
 namespace AspJS
 {
@@ -17,7 +16,9 @@ namespace AspJS
 			if(e.Row.RowType == DataControlRowType.DataRow)
 			{
 				var deleteButton = e.Row.FindControl("EmployeeDeleteButton") as LinkButton;
-				deleteButton.Attributes.Add("onclick", "return confirm('Are you sure to delete?')");
+				var id = DataBinder.Eval(e.Row.DataItem, "Id");
+				var onClickValue = string.Format("return confirm('Are you sure to delete record with id: \"{0}\".?')", id);
+				deleteButton.Attributes.Add("onclick", onClickValue);
 			}
 		}
 	}
