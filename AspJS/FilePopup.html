@@ -13,9 +13,11 @@
 </head>
 <body>
 	<div class="container" ng-controller="fileCtrl">
-		<hr />
+		<br/>
+		<input class="form-control" id="searchInput" ng-model='searchText' type="text" placeholder="Report search..">
+		<br/>
 		<uib-accordion>
-			<div ng-repeat="files in fData">
+			<div ng-repeat="files in fData | filter: { date: searchText }">
 				<div uib-accordion-group class="panel-default" is-open="status.open">
 					<uib-accordion-heading>
 						{{files.date | date }} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
@@ -35,8 +37,8 @@
 				</div>
 			</div>
 		</uib-accordion>
-		<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" max-size="maxSize" boundary-link-numbers="true" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" num-pages="numPages"></ul>
-		<pre>Page: {{currentPage}} / {{numPages}}</pre>
+		<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage" max-size="maxSize" boundary-link-numbers="true" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" num-pages="numPages" ng-change="pageChanged()"></ul>
+		<pre>Page: {{currentPage}} / {{numPages}} | Total Reports: {{totalItems}}</pre>
 	</div>
 	<script type="text/javascript" src="Scripts/src/app/fileApp.js"></script>
 </body>

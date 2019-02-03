@@ -31,7 +31,8 @@ namespace AspJS
 		private string GetCurrentData()
 		{
 			List<FileData> fileDatas = new List<FileData>();
-			for (int i = 0; i < 100; i++)
+			Random random = new Random();
+			for (int i = 0; i < random.Next(500, 1000); i++)
 			{
 				var dateTime = DateTime.Now;
 				fileDatas.Add(GetFileData(dateTime.AddDays(i)));
