@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html ng-app="fileApp">
+<head>
+	<meta charset="utf-8" />
+	<title>Internal Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var mainWindow = window.opener;
+		var fileData = mainWindow.fileData;
+		if (fileData != null) {
+			var app = angular.module('fileApp', []);
+			app.controller('fileCtrl', function () {
+				this.fileData = fileData;
+			});
+		}
+	</script>
+</head>
+<body>
+	<div class="container" ng-controller="fileCtrl as file">
+		<table class="table">
+			<thead>
+				<tr>
+					<td>Value</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="files in file.fileData">
+					<td>{{files.date}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

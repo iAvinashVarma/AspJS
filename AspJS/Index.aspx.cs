@@ -1,28 +1,65 @@
-﻿using System;
+﻿using AspJS.Model;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Web.UI;
 
 namespace AspJS
 {
 	public partial class Index : Page
 	{
+		public string FileData
+		{
+			get; set;
+		}
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			var key = "clientScript";
-			var script = "document.getElementById('LblDate').textContent = new Date();";
-			ClientScript.RegisterStartupScript(LblDate.GetType(), key, script, true);	
+			string key = "clientScript";
+			string script = "document.getElementById('LblDate').textContent = new Date();";
+			ClientScript.RegisterStartupScript(LblDate.GetType(), key, script, true);
 		}
 
 		protected void BtnSubmit_Click(object sender, EventArgs e)
 		{
-			var firstName = GetFirstName();
-			var chromeScript = string.Format("var popup = window.open('Popup.html', '_blank ', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes'); popup.firstName = '{0}';", GetFirstName());
-			//var internetExplorerScript = "window.showModalDialog('Popup.html', '', 'dialogHeight:100px;dialogWidth:280px;status:no');";
-			ClientScript.RegisterClientScriptBlock(this.GetType(), "PopUp", chromeScript, true);
+			FileData = GetCurrentData();
+			string commonScript = string.Format("window.open('FilePopup.html', '_blank ', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');");
+			ClientScript.RegisterClientScriptBlock(GetType(), "FilePopup", commonScript, true);
 		}
 
-		private string GetFirstName()
+		private string GetCurrentData()
 		{
-			return "Avinash";
+			List<FileData> fileDatas = new List<FileData>();
+			for (int i = 0; i < 100; i++)
+			{
+				fileDatas.Add(GetFileData());
+			}
+			string json = JsonConvert.SerializeObject(fileDatas);
+			return string.Format("{0}", json);
+		}
+
+		private FileData GetFileData()
+		{
+			List<string> data = new List<string>
+			{
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap.css.map",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap.min.css",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap.min.css.map",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-grid.css",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-grid.css.map",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-grid.min.css",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-grid.min.css.map",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-reboot.css",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-reboot.css.map",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-reboot.min.css",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap-reboot.min.css.map",
+				"E:\\Practice\\ASP.NET\\AspJS\\AspJS\\Content\\bootstrap.css"
+			};
+			return new FileData
+			{
+				Date = DateTime.Now,
+				Paths = data
+			};
 		}
 	}
 }

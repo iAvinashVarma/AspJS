@@ -64,6 +64,7 @@
 			</table>
 		</div>
 		<script type="text/javascript">
+			var fileData = <%= FileData %>;
 			function countCharacters() {
 				var lblCount = document.getElementById('LblCount');
 				var txtName = document.getElementById('TxtName');
