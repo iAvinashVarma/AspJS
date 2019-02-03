@@ -24,7 +24,8 @@ namespace AspJS
 		{
 			FileData = GetCurrentData();
 			string commonScript = string.Format("window.open('FilePopup.html', '_blank ', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');");
-			ClientScript.RegisterClientScriptBlock(GetType(), "FilePopup", commonScript, true);
+			string key = string.Format("FilePopup-{0:yyyyMMddHHmmss}", DateTime.Now);
+			ClientScript.RegisterClientScriptBlock(GetType(), key, commonScript, true);
 		}
 
 		private string GetCurrentData()
