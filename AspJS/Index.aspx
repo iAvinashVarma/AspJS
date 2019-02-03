@@ -79,7 +79,9 @@
 						var cellCheckBox = employeeGridView.rows[i].cells[0].getElementsByTagName("input")[0];
 						if (!cellCheckBox.checked) {
 							atleastOneCheckBoxUnchecked = true;
-							break;
+							employeeGridView.rows[i].style.background = "#FFFFFF";
+						} else {
+							employeeGridView.rows[i].style.background = "#CCCCCC"
 						}
 					}
 
