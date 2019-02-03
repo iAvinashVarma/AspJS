@@ -41,6 +41,11 @@
 							<asp:TextBox ID="TxtComments" TextMode="MultiLine" placeholder="Type your comments here" runat="server"></asp:TextBox>
 						</td>
 					</tr>
+					<tr>
+						<td colspan="3">
+							<asp:Button ID="BtnSubmit" runat="server" Text="Submit" UseSubmitBehavior="false" OnClientClick="this.disabled='true'; this.value='Please wait...'" />
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
