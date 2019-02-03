@@ -36,6 +36,15 @@
 						</td>
 					</tr>
 					<tr>
+						<td>Card Number</td>
+						<td colspan="2">
+							<asp:TextBox Id="TxtCardOne" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardTwo')"></asp:TextBox>
+							<asp:TextBox Id="TxtCardTwo" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardThree')"></asp:TextBox>
+							<asp:TextBox Id="TxtCardThree" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardFour')"></asp:TextBox>
+							<asp:TextBox Id="TxtCardFour" runat="server" Width="50px" MaxLength="4"></asp:TextBox>
+						</td>
+					</tr>
+					<tr>
 						<td>Comments</td>
 						<td colspan="2">
 							<asp:TextBox ID="TxtComments" TextMode="MultiLine" placeholder="Type your comments here" runat="server"></asp:TextBox>
@@ -56,6 +65,14 @@
 				var lblCount = document.getElementById('LblCount');
 				var txtName = document.getElementById('TxtName');
 				lblCount.innerHTML = txtName.value.length > 0 ? txtName.value.length + " character(s)" : "";
+			}
+
+			function moveCursor(fromTextBox, toTextBox) {
+				var length = fromTextBox.value.length;
+				var maxLength = fromTextBox.getAttribute('maxLength');
+				if (length == maxLength) {
+					document.getElementById(toTextBox).focus();
+				}
 			}
 		</script>
 	</form>
