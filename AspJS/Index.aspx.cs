@@ -33,13 +33,14 @@ namespace AspJS
 			List<FileData> fileDatas = new List<FileData>();
 			for (int i = 0; i < 100; i++)
 			{
-				fileDatas.Add(GetFileData());
+				var dateTime = DateTime.Now;
+				fileDatas.Add(GetFileData(dateTime.AddDays(i)));
 			}
 			string json = JsonConvert.SerializeObject(fileDatas);
 			return string.Format("{0}", json);
 		}
 
-		private FileData GetFileData()
+		private FileData GetFileData(DateTime dateTime)
 		{
 			List<string> data = new List<string>
 			{
@@ -58,7 +59,7 @@ namespace AspJS
 			};
 			return new FileData
 			{
-				Date = DateTime.Now,
+				Date = dateTime,
 				Paths = data
 			};
 		}
