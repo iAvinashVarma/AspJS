@@ -12,7 +12,18 @@
 			<asp:GridView ID="EmployeeGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="EmployeeDataSource" EnableModelValidation="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnRowDataBound="EmployeeGridView_RowDataBound">
 				<AlternatingRowStyle BackColor="#CCCCCC" />
 				<Columns>
+					<asp:TemplateField>
+						<HeaderTemplate>
+							<asp:CheckBox ID="CbSelectAll" onclick="headerCheckBoxClick(this);" runat="server" />
+						</HeaderTemplate>
+						<ItemTemplate>
+							<asp:CheckBox ID="CbSelect" onclick="childCheckBoxClick(this);" runat="server" />
+						</ItemTemplate>
+					</asp:TemplateField>
 					<asp:TemplateField ShowHeader="False">
+						<HeaderTemplate>
+							Delete
+						</HeaderTemplate>
 						<ItemTemplate>
 							<asp:LinkButton ID="EmployeeDeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete"></asp:LinkButton>
 						</ItemTemplate>
@@ -40,6 +51,30 @@
 					<asp:Parameter Name="original_Id" Type="Int32" />
 				</UpdateParameters>
 			</asp:SqlDataSource>
+
+			<script type="text/javascript">
+				var employeeGridView = document.getElementById('EmployeeGridView');
+				function headerCheckBoxClick(checkbox) {
+					for (var i = 1; i < employeeGridView.rows.length; i++) {
+						var cellCheckBox = employeeGridView.rows[i].cells[0].getElementsByTagName("input")[0];
+						cellCheckBox.checked = checkbox.checked;
+					}
+				}
+
+				function childCheckBoxClick(childCheckbox) {
+					var atleastOneCheckBoxUnchecked = false;
+					for (var i = 1; i < employeeGridView.rows.length; i++) {
+						var cellCheckBox = employeeGridView.rows[i].cells[0].getElementsByTagName("input")[0];
+						if (!cellCheckBox.checked) {
+							atleastOneCheckBoxUnchecked = true;
+							break;
+						}
+					}
+
+					var selectAllCheckbox = employeeGridView.rows[0].cells[0].getElementsByTagName("input")[0];
+					selectAllCheckbox.checked = !atleastOneCheckBoxUnchecked;
+				}
+			</script>
 		</div>
 	</form>
 </body>
