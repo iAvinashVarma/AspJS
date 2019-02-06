@@ -17,28 +17,28 @@
 		<input class="form-control" id="searchInput" ng-model='searchText' type="text" placeholder="Report search..">
 		<br />
 		<uib-accordion>
-			<div ng-repeat="files in fData | filter: { date: searchText }">
+			<div ng-repeat="fileDatum in fData | filter: { date: searchText }">
 				<div uib-accordion-group class="panel-default" is-open="status.open">
 					<uib-accordion-heading>
-						{{files.date | date }} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+						{{ fileDatum.reportDate | date }} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
 					</uib-accordion-heading>
 					<table class="table">
 						<thead>
 							<tr>
-								<td><strong>{{files.date | date }} - Report</strong></td>
+								<td><strong>{{ fileDatum.reportDate | date }} - Report</strong></td>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="path in files.paths">
+							<tr ng-repeat="file in fileDatum.files">
 								<td>
-									<button type="submit" class="btn btn-link">
+									<button class="btn btn-link" ng-click="openFile(fileDatum, file)">
 										<span class="glyphicon glyphicon-eye-open"></span>
 									</button>
-									<button type="submit" class="btn btn-link">
+									<button type="submit" class="btn btn-link" ng-click="saveFile(fileDatum, file)">
 										<span class="glyphicon glyphicon-save-file"></span>
 									</button>
 									<button type="submit" class="btn btn-link">
-										{{ path }}
+										{{ serverPath(fileDatum, file) }}
 									</button>
 								</td>
 							</tr>

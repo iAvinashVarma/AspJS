@@ -2,13 +2,22 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 
 namespace AspJS.Middle
 {
 	public class FileProcess
 	{
+		private readonly string _serverPath;
+
+		private readonly string _serverUrl;
+		private const string ReportDirectory = "Report/";
+
+		public FileProcess(string serverPath, string serverUrl)
+		{
+			_serverPath = serverPath;
+			_serverUrl = serverUrl;
+		}
+
 		public FileData FileData
 		{
 			get
@@ -26,16 +35,25 @@ namespace AspJS.Middle
 
 		private FileDatum GetFileData(DateTime dateTime)
 		{
-			string reportDirectory = AppDomain.CurrentDomain.BaseDirectory;
-			List<string> data = new List<string>
+			string fileOne = string.Format("FileOne-{0:yyyyMMddHHmmss}.csv", dateTime);
+			string fileTwo = string.Format("FileTwo-{0:yyyyMMddHHmmss}.csv", dateTime);
+			List<string> physicalPaths = new List<string>
 			{
-				Path.Combine(reportDirectory, string.Format(@"Report\FileOne-{0:yyyyMMddHHmmss}.csv", dateTime)),
-				Path.Combine(reportDirectory, string.Format(@"Report\FileTwo-{0:yyyyMMddHHmmss}.csv", dateTime))
+				Path.Combine(_serverPath, string.Format("{0}{1}", ReportDirectory, fileOne)),
+				Path.Combine(_serverPath, string.Format("{0}{1}", ReportDirectory, fileTwo))
+			};
+			List<string> files = new List<string>
+			{
+				fileOne,
+				fileTwo
 			};
 			return new FileDatum
 			{
-				Date = dateTime,
-				Paths = data
+				ReportDirectory = ReportDirectory,
+				ServerUrl = _serverUrl,
+				ReportDate = dateTime,
+				PhysicalPaths = physicalPaths,
+				Files = files
 			};
 		}
 	}

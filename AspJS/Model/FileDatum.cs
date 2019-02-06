@@ -6,10 +6,22 @@ namespace AspJS.Model
 {
 	public class FileDatum
 	{
-		[JsonProperty("date")]
-		public DateTime Date { get; set; }
+		[JsonProperty("serverUrl")]
+		public string ServerUrl { get; set; }
 
-		[JsonProperty("paths")]
-		public List<string> Paths { get; set; }
+		[JsonProperty("reportDirectory")]
+		public string ReportDirectory { get; set; }
+
+		[JsonIgnore]
+		public string PhysicalPath { get; set; }
+
+		[JsonProperty("reportDate")]
+		public DateTime ReportDate { get; set; }
+
+		[JsonIgnore]
+		public List<string> PhysicalPaths { get; set; }
+
+		[JsonProperty("files")]
+		public List<string> Files { get; set; }
 	}
 }

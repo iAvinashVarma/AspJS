@@ -18,8 +18,9 @@ namespace AspJS
 		{
 			RegisterClient registerClient = new RegisterClient();
 			List<KeyValuePair<string, string>> registerDictionary = new List<KeyValuePair<string, string>>();
-			FileProcess fileProcess = new FileProcess();
-			registerDictionary.Add(registerClient.ScriptBlock(ScriptBlockType.Common, null));
+			var serverUrl = string.Format("{0}://{1}{2}/", Request.Url.Scheme, Request.Url.Authority, Request.ApplicationPath.TrimEnd('/'));
+			FileProcess fileProcess = new FileProcess(Server.MapPath("~"), serverUrl);
+			registerDictionary.Add(registerClient.ScriptBlock(ScriptBlockType.Common));
 			registerDictionary.Add(registerClient.ScriptBlock(ScriptBlockType.FileType, fileProcess.FileData));
 			registerDictionary.ForEach(s =>
 			{
