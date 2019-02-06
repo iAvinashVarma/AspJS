@@ -9,8 +9,6 @@
 		app.controller('fileCtrl', function ($scope, $log) {
 			this.fileData = fileData;
 			$scope.totalItems = fileData.length;
-			$scope.serverUrl = fileData.serverUrl;
-			$scope.reportDirectory = fileData.reportDirectory;
 			$scope.currentPage = 1;
 			$scope.itemsPerPage = 10;
 			$scope.maxSize = 5;
@@ -18,6 +16,12 @@
 				return fileDatum.serverUrl + fileDatum.reportDirectory + fileName;
 			};
 			$scope.openFile = function (fileDatum, fileName) {
+				var serverPath = $scope.serverPath(fileDatum, fileName);
+				var data = readTextFile(serverPath);
+				$scope.fileContent = data;
+				$scope.currentFileName = fileName;
+			};
+			$scope.saveFile = function (fileDatum, fileName) {
 				var serverPath = $scope.serverPath(fileDatum, fileName);
 				var data = readTextFile(serverPath);
 				if (data !== null) {
@@ -33,11 +37,7 @@
 						elem.click();
 						document.body.removeChild(elem);
 					}
-
 				}
-			};
-			$scope.saveFile = function (fileDatum, fileName) {
-				$scope.openFile(fileDatum, fileName);
 			};
 			$scope.$watch("currentPage", function () {
 				setPagingData($scope.currentPage);
