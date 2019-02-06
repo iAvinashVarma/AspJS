@@ -43,10 +43,10 @@
 					<tr>
 						<td>Card Number</td>
 						<td colspan="2">
-							<asp:TextBox Id="TxtCardOne" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardTwo')"></asp:TextBox>
-							<asp:TextBox Id="TxtCardTwo" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardThree')"></asp:TextBox>
-							<asp:TextBox Id="TxtCardThree" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardFour')"></asp:TextBox>
-							<asp:TextBox Id="TxtCardFour" runat="server" Width="50px" MaxLength="4"></asp:TextBox>
+							<asp:TextBox ID="TxtCardOne" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardTwo')"></asp:TextBox>
+							<asp:TextBox ID="TxtCardTwo" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardThree')"></asp:TextBox>
+							<asp:TextBox ID="TxtCardThree" runat="server" Width="50px" MaxLength="4" onkeyup="moveCursor(this, 'TxtCardFour')"></asp:TextBox>
+							<asp:TextBox ID="TxtCardFour" runat="server" Width="50px" MaxLength="4"></asp:TextBox>
 						</td>
 					</tr>
 					<tr>
@@ -64,7 +64,6 @@
 			</table>
 		</div>
 		<script type="text/javascript">
-			var fileData = <%= FileData %>;
 			function countCharacters() {
 				var lblCount = document.getElementById('LblCount');
 				var txtName = document.getElementById('TxtName');

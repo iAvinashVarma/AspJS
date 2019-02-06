@@ -1,15 +1,13 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace AspJS.Model
 {
-	public class FileData
+	public class FileData : List<FileDatum>
 	{
-		[JsonProperty("date")]
-		public DateTime Date { get; set; }
-
-		[JsonProperty("paths")]
-		public List<string> Paths { get; set; }
+		public override string ToString()
+		{
+			return JsonConvert.SerializeObject(this); 
+		}
 	}
 }

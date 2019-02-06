@@ -3,6 +3,9 @@
 	var fileData = mainWindow.fileData;
 	if (fileData !== null) {
 		var app = angular.module('fileApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+		app.controller('mainCtrl', function ($scope, $log) {
+			$scope.title = "Reports - " + new Date();
+		});
 		app.controller('fileCtrl', function ($scope, $log) {
 			this.fileData = fileData;
 			$scope.totalItems = fileData.length;
