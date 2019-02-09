@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspJS", "AspJS\AspJS.csproj
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AspJSDB", "AspJSDB\AspJSDB.sqlproj", "{1FD505CB-3982-4D00-A453-509EE204EE72}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspJSTests", "AspJSTests\AspJSTests.csproj", "{34462D2F-61C5-4F97-B139-3F2A1FE38F63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{1FD505CB-3982-4D00-A453-509EE204EE72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD505CB-3982-4D00-A453-509EE204EE72}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FD505CB-3982-4D00-A453-509EE204EE72}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{34462D2F-61C5-4F97-B139-3F2A1FE38F63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34462D2F-61C5-4F97-B139-3F2A1FE38F63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34462D2F-61C5-4F97-B139-3F2A1FE38F63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34462D2F-61C5-4F97-B139-3F2A1FE38F63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
