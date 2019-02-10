@@ -32,7 +32,7 @@ steps:
   displayName: 'Build solution'
   inputs:
     solution: '$(Parameters.solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\\\"'
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
@@ -40,15 +40,15 @@ steps:
   displayName: 'Test Assemblies'
   inputs:
     testAssemblyVer2: |
-     **\$(BuildConfiguration)\*test*.dll
-     !**\obj\**
+     **\\$(BuildConfiguration)\\*test*.dll
+     !**\\obj\\**
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
   inputs:
-    SearchPattern: '**\bin\**\*.pdb'
+    SearchPattern: '**\\bin\\**\\*.pdb'
     PublishSymbols: false
   continueOnError: true
 
